@@ -9,10 +9,12 @@ import { StarIcon } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "../ui/badge";
 import VotingButtons from "./voting-buttons";
-// import { ProductType } from "@/types";
+import { InferSelectModel } from "drizzle-orm";
+import { products } from "@/db/schema";
 
-export default function ProductCard({ product }: { product: any }) {
-  // fix needed
+type ProductType = InferSelectModel<typeof products>;
+
+export default function ProductCard({ product }: { product: ProductType }) {
   const hasVoted = false;
   return (
     <Link href={`/products/${product.slug}`}>
@@ -24,7 +26,7 @@ export default function ProductCard({ product }: { product: any }) {
                 <CardTitle className="text-lg group-hover:text-primary transition-colors">
                   {product.name}
                 </CardTitle>
-                {(product.voteCount > 100 || product.isFeatured ) && (
+                {(product.voteCount > 100) && (
                   <Badge className="gap-1 bg-primary text-primary-foreground flex items-center pr-3 pb-1">
                     <StarIcon className="size-3 fill-current" />
                     <span className="h-3">Featured</span>

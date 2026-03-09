@@ -76,11 +76,11 @@ function HeroSection() {
                             </Link>
                         </Button>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 max-w-2xl w-full">
+                    {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 max-w-2xl w-full">
                         {statsData.map((stat) => (
                             <StatsCard key={stat.label} {...stat} />
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>
