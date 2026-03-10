@@ -14,10 +14,8 @@ export default async function AdminPage() {
     redirect("/unauthorized");
   }
 
-  console.log("MY SESSION CLAIMS:", sessionClaims);
   // Safely check the custom claim we added to the session token
   const isAdmin = sessionClaims?.metadata?.isAdmin === true;
-  console.log(isAdmin)
   if (!isAdmin) {
     redirect("/");
   }
