@@ -1,14 +1,20 @@
 import { db } from "@/db";
 import { products } from "@/db/schema";
-import { desc, eq } from "drizzle-orm";
+import { desc, eq, and, gt } from "drizzle-orm";
 import { connection } from "next/server";
 
 export async function getFeaturedProducts() {
     "use cache";
+
     const productsData = await db
         .select()
         .from(products)
-        .where(eq(products.status, "approved"))
+        .where(
+            and(
+                eq(products.status, "approved"),
+                gt(products.voteCount, 100) // Adds the > 100 condition
+            )
+        )
         .orderBy(desc(products.voteCount));
 
     return productsData;
