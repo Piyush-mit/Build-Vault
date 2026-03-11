@@ -7,6 +7,7 @@ import AdminActions from "./admin-actions";
 import { cn } from "@/lib/utils";
 import { InferSelectModel } from "drizzle-orm";
 import { products } from "@/db/schema";
+import { deleteProductAction } from "@/lib/admin/admin-actions";
 
 export type ProductType = InferSelectModel<typeof products>;
 export default function AdminProductCard({
@@ -68,7 +69,7 @@ export default function AdminProductCard({
             </div>
           </CardDescription>
           <CardFooter>
-            <Button variant="outline">
+            <Button variant="outline" onClick={()=>deleteProductAction(product.id)}>
               <Trash2Icon className="size-4" />
               Delete
             </Button>
