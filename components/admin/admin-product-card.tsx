@@ -1,4 +1,4 @@
-
+"use client"
 import { Trash2Icon } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
